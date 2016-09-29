@@ -1,0 +1,16 @@
+<ul>
+	{% for TextInformation in textinformation_list %}
+		
+		<li>
+		{{ TextInformation.pk }} -
+		{{ TextInformation.infotype }} -
+		{{ TextInformation.info_text }} -
+		{{ TextInformation.pup_date }} 
+		
+		<a href="{% url 'jobinformation:TextInformationUpdate' TextInformation.id %}">edit</a>
+    	<a href="{% url 'jobinformation:TextInformationDelete' TextInformation.id %}">delete</a>
+    	
+		</li> 	
+	{% endfor %}
+</ul>
+<a href="{% url 'jobinformation:TextInformationNew' %}">New info tag</a>

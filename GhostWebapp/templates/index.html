@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} {{ block.super }} {% endblock title %}
+{% block stylesheets %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static "css/about.css" %}">
+{% endblock stylesheets %}
+
+
+
+{% block content %}
+{{block.super}}
+	<img src="{% static "images/spider-cras.gif" %}" alt="My image"/>
+{% endblock content %}
+
+
+{% block user-content %} 
+	{% if user.is_authenticated %}
+		Hello {{ request.user.first_name }}, <li><a href="{% url "logout" %}">Logout</a></li>
+	{% else %}
+    	<!--  <p>Welcome, new user.</p> -->
+    	<li><a href="{% url "login" %}">Log-in</a></li>
+	{% endif %}
+
+{% endblock user-content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} {{ block.super }} {% endblock title %}
+{% block stylesheets %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static "css/about.css" %}">
+{% endblock stylesheets %}
+{% block content %}
+	{{ block.super }}
+	<p>Welcome to some page to help in some heck ways!!</p>
+	
+	<ul>
+	{% for InformationType in informationtype_list %}
+		
+		<li>
+		{{ InformationType.pk }} -
+		{{ InformationType.type_text }}
+		
+		<a href="{% url 'jobinformation:JobInfoUpdate' InformationType.id %}">edit</a>
+    	<a href="{% url 'jobinformation:JobInfoDelete' InformationType.id %}">delete</a>	
+		
+		</li> 	
+	{% endfor %}
+	</ul>
+	<a href="{% url 'jobinformation:JobInfoNew' %}">New info tag</a>
+	
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "base_jobimformation.html" %}
+
+{% block content %}
+<ul>
+	{% for topic in topic_list %}
+		
+		<li>
+		{{ topic.pk }} -
+		{{ topic.topic_name }}
+		
+		<a href="{% url 'jobinformation:TopicUpdate' topic.id %}">edit</a>
+		<a href="{% url 'jobinformation:TopicDelete' topic.id %}">delete</a>
+		    			
+		</li> 	
+	{% endfor %}
+</ul>
+<a href="{% url 'jobinformation:TopicNew' %}">New info tag</a>
+
+
+{% endblock %}

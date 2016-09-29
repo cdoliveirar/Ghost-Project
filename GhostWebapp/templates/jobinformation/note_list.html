@@ -1,0 +1,25 @@
+{% extends "base_jobimformation.html" %}
+
+
+{% block content %}
+<ul>
+	{% for note in note_list %}
+		
+		<li>
+		{{ note.pk }} -
+		{{ note.topic_name }} -
+		{{ note.text }} -
+		{{ note.pup_date }} 
+		
+		<a href="{% url 'jobinformation:NoteUpdate' note.id %}">edit</a>
+    	<a href="{% url 'jobinformation:NoteDelete' note.id %}">delete</a>
+    	
+		</li> 	
+	{% endfor %}
+</ul>
+<a href="{% url 'jobinformation:NoteNew' %}">New info tag</a>
+
+<br><br>
+<a href="{% url 'jobinformation:TopicList' %}">Review a topic</a>
+{% endblock content %}
+
